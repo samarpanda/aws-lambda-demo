@@ -1,0 +1,29 @@
+{
+  "name": "aws-lambda-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "sls offline start --port 4500",
+    "sls": "sls",
+    "list": "sls deploy list",
+    "local-fn-01": "sls invoke local -f hello",
+    "local-fn-02": "sls invoke local -f helloworld",
+    "fnevent": "sls invoke local -f fnevent -p src/event.json"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "serverless-http": "^1.5.5",
+    "serverless-offline": "^3.20.2"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "prettier": "1.19.1",
+    "serverless": "^1.77.1",
+    "supertest": "^3.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

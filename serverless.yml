@@ -1,0 +1,26 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: nodejs12.0
+  profile: test-cli
+  region: us-west-1
+  stage: dev
+
+plugins:
+  - serverless-offline
+
+functions:
+  api:
+    handler: src/api/api.handler
+    events:
+      - http: GET /api
+
+  hello:
+    handler: handler.hello
+
+  helloworld:
+    handler: src/helloworld.handler
+
+  fnevent:
+    handler: src/fnevent.handler
