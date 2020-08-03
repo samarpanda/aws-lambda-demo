@@ -2,9 +2,9 @@ service: serverless
 
 provider:
   name: aws
-  runtime: nodejs12.0
+  runtime: nodejs12.x
   profile: test-cli
-  region: us-west-1
+  region: us-east-2
   stage: dev
 
 plugins:
@@ -15,6 +15,23 @@ functions:
     handler: src/api/api.handler
     events:
       - http: GET /api
+
+  todos:
+    handler: src/api/todos.handler
+    events:
+      - http:
+          path: /todo
+          method: GET
+
+  todo:
+    handler: src/api/todo.handler
+    events:
+      - http:
+          path: /todo/{id}
+          method: GET
+          request:
+            parameters:
+              id: true
 
   hello:
     handler: handler.hello
