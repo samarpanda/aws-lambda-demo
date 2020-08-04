@@ -3,7 +3,7 @@ service: serverless
 provider:
   name: aws
   runtime: nodejs12.x
-  profile: test-cli
+  profile: serverless-cli
   region: us-east-2
   stage: dev
 
@@ -11,6 +11,12 @@ plugins:
   - serverless-offline
 
 functions:
+  collect:
+    handler: src/collect/collect.handler
+    events:
+      - http: ANY /
+      - http: 'ANY /{param+}'
+
   api:
     handler: src/api/api.handler
     events:
